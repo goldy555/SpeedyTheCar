@@ -15,9 +15,10 @@ ARRaycastManager m_RaycastManager;
 List<ARRaycastHit> m_Hits = new List<ARRaycastHit>();
 [SerializeField]
 GameObject spawnablePrefab;
-
-Camera arCam;
+    private bool objectSpawned = false;
+    Camera arCam;
 GameObject spawnedObject; 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -46,10 +47,12 @@ arCam = GameObject.Find("AR Camera").GetComponent<Camera>();
                     if (hit.collider.gameObject.tag == "Spawnable")
                     {
                         spawnedObject = hit.collider.gameObject;
+                        objectSpawned = true;
                     }
                     else
                     {
                         SpawnPrefab(m_Hits[0].pose.position);
+                        objectSpawned = true;
                     }
                 }
 
@@ -60,7 +63,9 @@ arCam = GameObject.Find("AR Camera").GetComponent<Camera>();
     }
     if(Input.GetTouch(0).phase == TouchPhase.Ended)
     {
+
         spawnedObject = null;
+
      }
 }
     }
