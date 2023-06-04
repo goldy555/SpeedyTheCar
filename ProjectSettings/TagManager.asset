@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Spawnable
+  - Cube
+  - PointsManager
   layers:
   - Default
   - TransparentFX
